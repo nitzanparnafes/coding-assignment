@@ -8,13 +8,11 @@ const {errorHandler} = require("./utils/errorHandler");
 
 const app = express()
 
-app.use(express.json())
-app.use(errorHandler)
-app.use('/api', appRoute)
-app.use('/interests', interestsRoute)
-
 setProvider(new TmdbProvider())
 
-app.listen(9400, () => {
-    console.log('Server running')
-})
+app.use(express.json())
+app.use(errorHandler)
+app.use('/', appRoute)
+app.use('/interests', interestsRoute)
+
+module.exports = app

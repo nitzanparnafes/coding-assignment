@@ -2,11 +2,11 @@
   "name": "coding-assignment",
   "version": "1.0.0",
   "description": "Vi's Coding Assignment (Engineering Team)",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "author": "Alon Kaduri <alonk@vi.co>",
   "scripts": {
     "test": "jest",
-    "start": "node src/index.js"
+    "start": "node src/server.js"
   },
   "devDependencies": {
     "jest": "^28.1.0"
@@ -15,6 +15,7 @@
     "axios": "^0.27.2",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "lru-cache": "^11.0.2"
+    "lru-cache": "^11.0.2",
+    "supertest": "^7.0.0"
   }
 }
