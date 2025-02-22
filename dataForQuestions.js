@@ -24,7 +24,7 @@ const movies = { // [movie:id]
     'Ant-Man and the Wasp': 363088,
     'Captain Marvel': 299537,
     'Avengers: Endgame': 299534,
-    'Spider-Man: Far From Home': 429617
+    'Spider-Man: Far From Home': 429617,
 }
 
 const actors = [
@@ -51,6 +51,7 @@ const actors = [
     'Black Panther',
     'Samuel L. Jackson',
     'Dave Bautista',
+    'Lord zibzubi'
 ]
 
 module.exports = {
