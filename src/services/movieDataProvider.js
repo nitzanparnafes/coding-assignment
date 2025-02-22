@@ -1,5 +1,5 @@
 const MovieProvider = require("./providers/movieProvider");
-let provider = new MovieProvider()
+let provider = null
 
 function setProvider(newProvider) {
     provider = newProvider;
