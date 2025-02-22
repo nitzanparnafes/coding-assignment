@@ -6,7 +6,7 @@ const INTERESTS_FILE = path.join(__dirname, '../data/interests.json')
 function loadInterests() {
     try {
         if (!existsSync(INTERESTS_FILE)) {
-            return { movies: [], actors: [] }
+            return {movies: [], actors: []}
         }
         const data = readFileSync(INTERESTS_FILE, "utf8")
         return JSON.parse(data)
@@ -51,4 +51,4 @@ function addActor(actor) {
     return interests
 }
 
-module.exports = { loadInterests, addMovie, addActor }
+module.exports = {loadInterests, addMovie, addActor}

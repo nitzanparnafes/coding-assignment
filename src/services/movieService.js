@@ -1,11 +1,12 @@
-const { getProvider } = require("./movieDataProvider")
-const { loadInterests } = require('../services/interestService')
+const {getProvider} = require("./movieDataProvider")
+const {loadInterests} = require('../services/interestService')
 
 const shortestString = (arr) => arr.reduce((min, str) => (str.length < min.length ? str : min), arr[0])
+
 async function getMoviesDataPerActor() {
     const provider = getProvider()
     const actorToMovies = {}
-    const { movies, actors } = loadInterests()
+    const {movies, actors} = loadInterests()
 
     for (const [movieName, movieId] of Object.entries(movies)) {
         const castData = await provider.fetchMovieCast(movieId)
@@ -38,15 +39,15 @@ async function getActorsWithMultipleCharacters(cleanNameFn) {
     const movieDatas = await getMoviesDataPerActor()
     return Object.fromEntries(
         Object.entries(movieDatas).filter(([_, movies]) => {
-            const cleanedCharacterNames = new Set(movies.map(movie => cleanNameFn(movie.castData['character'])))
-            const uniqueCleanedCharacterNames = [...cleanedCharacterNames].reduce((acc, name) => {
-                if (!acc.some(existing => existing.includes(name) || name.includes(existing))) {
-                    acc.push(name)
-                }
-                return acc
-            }, [])
-            return uniqueCleanedCharacterNames.length > 1
-        }
+                const cleanedCharacterNames = new Set(movies.map(movie => cleanNameFn(movie.castData['character'])))
+                const uniqueCleanedCharacterNames = [...cleanedCharacterNames].reduce((acc, name) => {
+                    if (!acc.some(existing => existing.includes(name) || name.includes(existing))) {
+                        acc.push(name)
+                    }
+                    return acc
+                }, [])
+                return uniqueCleanedCharacterNames.length > 1
+            }
         ).map(([actor, movies]) => [
             actor,
             movies.map(movie => ({
@@ -66,12 +67,12 @@ async function getCharactersWithMultipleActors(cleanNameFn) {
         for (const [existingName, data] of characterMap) {
             if (existingName.includes(cleanedUpNewChar) || cleanedUpNewChar.includes(existingName)) {
                 data.names.push(cleanedUpNewChar)
-                data.actors.push({ movieName, actorName: actor })
+                data.actors.push({movieName, actorName: actor})
                 return
             }
         }
         const cleanedUpChar = cleanNameFn(character)
-        characterMap.set(cleanedUpChar, { names: [cleanedUpChar], actors: [{ movieName, actorName: actor }]})
+        characterMap.set(cleanedUpChar, {names: [cleanedUpChar], actors: [{movieName, actorName: actor}]})
     }
 
     for (const [actor, movieData] of Object.entries(movieDatas)) {

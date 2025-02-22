@@ -10,4 +10,4 @@ function getProvider() {
     return provider;
 }
 
-module.exports = { setProvider, getProvider };
+module.exports = {setProvider, getProvider};

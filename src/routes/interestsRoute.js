@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.post('/movies', (req, res, next) => {
     try {
-        const { movie } = req.body
+        const {movie} = req.body
         const updatedInterests = addMovie(movie)
         res.json(updatedInterests)
     } catch (error) {
@@ -16,7 +16,7 @@ router.post('/movies', (req, res, next) => {
 
 router.post('/actors', (req, res, next) => {
     try {
-        const { actor } = req.body
+        const {actor} = req.body
         const updatedInterests = addActor(actor)
         res.json(updatedInterests)
     } catch (error) {

@@ -2,7 +2,7 @@ const express = require('express')
 require('dotenv').config()
 const appRoute = require('./routes/appRoutes')
 const interestsRoute = require('./routes/interestsRoute')
-const { setProvider } = require('./services/movieDataProvider')
+const {setProvider} = require('./services/movieDataProvider')
 const TmdbProvider = require('./services/providers/tmdbProvider')
 const {errorHandler} = require("./utils/errorHandler");
 
